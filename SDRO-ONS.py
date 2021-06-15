@@ -32,13 +32,13 @@ while data_inicial <= datetime.today():
     url = url_pt_1 + url_pt_2
     data = str(dia) + "-" + str(mes) + "-" + str(ano)
 
-    if os.path.exists('C:/Users/GN6006/Documents/Teste_ONS/' + str(url[-22:])):
+    if os.path.exists('Teste_ONS/' + str(url[-22:])):
         #print("ARQUIVO EXISTE")
         pass
     else:
         #print("ARQUIVO NÃO EXISTE")
         if str(requests.get(url)) == '<Response [200]>':
-            urllib.request.urlretrieve(url, 'C:/Users/GN6006/Documents/Teste_ONS/'+str(url[-22:]))
+            urllib.request.urlretrieve(url, 'Teste_ONS/'+str(url[-22:]))
             print(data)
             print("Arquivo Baixado")
 
@@ -436,7 +436,7 @@ def ea_data(aba, campo):
 
 ######################## ESPAÇO DESTINADO PARA TESTES DO PROGRAMA ########################
 
-subdiretorio = r'C:\Users\GN6006\Documents\Teste_ONS\DIARIO_'
+subdiretorio = r'Teste_ONS\DIARIO_'
 
 data_inicial_manipulacao = '01-01-2017'
 data_inicial_manipulacao = datetime.strptime(data_inicial_manipulacao, '%d-%m-%Y')
@@ -598,7 +598,7 @@ lista_impressao.append(ena_dicionario_campos.copy())
 lista_impressao.append(ea_dicionario_campos.copy())
 
 
-arquivo_saida = r'\\br-gve-fs\gvdocs$\01. Gestao Clientes\01.1 ESTUDOS NOVOS CLIENTES\MODELO\Novos modelos\PBI\Banco Boletim da Operação\DIARIO - Final_.xlsx'
+arquivo_saida = r'DIARIO - Final_.xlsx'
 writer = pd.ExcelWriter(arquivo_saida, engine='xlsxwriter')
 
 abas = ['01-Balanço de Energia', '12-Motivo do Despacho Térmico', '19-Energia Natural Afluente',
