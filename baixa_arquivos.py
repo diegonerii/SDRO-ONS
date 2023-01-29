@@ -5,6 +5,16 @@ import os.path
 
 
 class BaixaArquivos:
+    """
+    Antes de passar para a etapa de transformação, é necessário ter todo o histórico do ONS. 
+    Para tal, utilizou-se a biblioteca requests para baixar cada arquivo pelo sua URL.
+    ...
+    Métodos
+    -------
+    O único método desta classe é o __baixaArquivos, que não recebe nenhum parâmetro,
+    mas reflete a ideia principal de através de uma url fazer um request para baixar o arquivo.
+    """
+    
     def __init__(self):
         self.__data_inicial__ = '01-01-2017'
         self.__diretorio__ = 'files/'
