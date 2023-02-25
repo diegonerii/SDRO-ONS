@@ -98,12 +98,14 @@ class DespachoTermico(Inicializacao):
         for scan_linha in range(linha+1, self.worksheet_DT.nrows):
             lista.append(self.date)
 
-        dt_dicionario_campos["Data"] = lista
+        dt_dicionario_campos.setdefault("Data", []).extend(lista)
 
     
     def dt_campos(self, campo, titulo_coluna):
 
         linha_e_coluna = []
+        lista = []
+
         """Laço para achar onde está a célula de referência"""
         for coluna in range(0, self.worksheet_DT.ncols):
             for linha in range(0, self.worksheet_DT.nrows):
@@ -113,7 +115,6 @@ class DespachoTermico(Inicializacao):
         linha = linha_e_coluna[0]
         coluna = linha_e_coluna[1]
         
-        lista = []
         """
         Vai fazer uma varredura e buscar tudo o que for número separado por ponto.
         Depois, coloca esse valor numa lista.        
@@ -127,7 +128,7 @@ class DespachoTermico(Inicializacao):
             else:
                 lista.append(str(self.worksheet_DT.cell(scan_linha, coluna).value).strip())
 
-        dt_dicionario_campos[titulo_coluna] = lista
+        dt_dicionario_campos.setdefault(titulo_coluna, []).extend(lista) 
 
 
 class BalancoEnergetico(Inicializacao):
@@ -150,7 +151,7 @@ class BalancoEnergetico(Inicializacao):
         """
         be_data_arquivo = []
         be_data_arquivo.append(self.date)
-        be_dicionario_campos['Data'] = be_data_arquivo
+        be_dicionario_campos.setdefault("Data", []).extend(be_data_arquivo)
         
         submercados = ['Interligado', 'Norte', 'Nordeste', 'Sudeste / Centro-Oeste', 'Sul']
         for submercado in submercados:
@@ -158,13 +159,14 @@ class BalancoEnergetico(Inicializacao):
 
 
     def __be_busca_valores(self, tipo_de_energia, range_coluna, nome_coluna, submercado='Interligado', range_linha=int(11)):
-        lista = []
+        
         """
         Este método vai atuar dentro da planilha Balanço de Energia. Ele tem por objetivo 
         sumarizar os dados de produção de energia no SIN e em cada submercado.
         """
-
+        vetor_regex = []
         linha_e_coluna = []
+        self.lista = []
 
         """Laço para achar onde está a célula do Interligado, que servirá de referência"""
         for coluna in range(0, self.worksheet_BE.ncols):
@@ -174,7 +176,6 @@ class BalancoEnergetico(Inicializacao):
                     linha_e_coluna.append(coluna)
         linha = linha_e_coluna[0]
         coluna = linha_e_coluna[1]
-        vetor_regex = []
         
         """Depois de achar a célula, o programa faz uma varredura de linha a linha e apendando numa lista"""
         for scan_linha in range(linha, linha+range_linha):
@@ -192,11 +193,11 @@ class BalancoEnergetico(Inicializacao):
         o vetor_regex é uma lista com vários valores (match do regex). Ele só apenda o maior valor.
         """
         if min(vetor_regex) >= 0:
-            lista.append(max(vetor_regex))
+            self.lista.append(max(vetor_regex))
         else:
-            lista.append(min(vetor_regex))
+            self.lista.append(min(vetor_regex))
 
-        be_dicionario_campos[nome_coluna] = lista
+        be_dicionario_campos.setdefault(nome_coluna, []).extend(self.lista) 
 
 
     def be_busca_regioes(self, submercado):
@@ -248,6 +249,7 @@ class ENA(Inicializacao):
             self.ena_campos(list(fontes.keys())[fonte], list(fontes.values())[fonte])
                
     def ena_data(self, campo, titulo_coluna):
+        
         """
         Este primeiro método tem como objetivo pegar a data do arquivo e apendar
         numa lista de tamanho equivalente ao número de máximo de registros de uma
@@ -275,9 +277,10 @@ class ENA(Inicializacao):
             valor = str(self.worksheet_ENA.cell(scan_linha, coluna).value)
             lista.append(self.date)
 
-        ena_dicionario_campos[titulo_coluna] = lista
+        ena_dicionario_campos.setdefault(titulo_coluna, []).extend(lista) 
 
     def ena_campos(self, campo, titulo_coluna):
+        
         """
         Seguindo a mesma lógica do método anterior, este método vai buscar
         todos os valores das colunas a partir de uma palavra de referência e dos valores achados para linha e coluna no método anterior.
@@ -312,7 +315,7 @@ class ENA(Inicializacao):
             else:
                 lista.append(str(self.worksheet_ENA.cell(scan_linha, coluna).value).strip())
 
-        ena_dicionario_campos[titulo_coluna] = lista
+        ena_dicionario_campos.setdefault(titulo_coluna, []).extend(lista) 
 
 
 class EnergiaArmazenada(Inicializacao):
@@ -338,6 +341,7 @@ class EnergiaArmazenada(Inicializacao):
             self.ea_campos(submercados[submercado], submercados[submercado], 1)
 
     def ea_data(self, campo):
+        
         """
         Este primeiro método tem como objetivo pegar a data do arquivo e apendar
         numa lista de tamanho equivalente ao número de máximo de registros de uma
@@ -345,6 +349,7 @@ class EnergiaArmazenada(Inicializacao):
         """
         linha_e_coluna = []
         lista = []
+
         for coluna in range(0, self.worksheet_EA.ncols):
             for linha in range(0, self.worksheet_EA.nrows):
                 if re.findall(campo, str(self.worksheet_EA.cell(linha, coluna).value)) != []:
@@ -355,14 +360,17 @@ class EnergiaArmazenada(Inicializacao):
         for scan_linha in range(linha+0, self.worksheet_EA.nrows):
             lista.append(self.date)
 
-        ea_dicionario_campos["Data"] = lista
+        ea_dicionario_campos.setdefault("Data", []).extend(lista) 
 
     def ea_campos(self, campo, titulo_coluna, range_linha):
+        
         """
         Seguindo a mesma lógica do método anterior, este método vai buscar
         todos os valores das colunas. Primeiro ele acha o valor máximo de cada linha e coluna a partir de uma referência e depois faz uma varredura.
         """
         linha_e_coluna = []
+        lista = []
+
         for coluna in range(0, self.worksheet_EA.ncols):
             for linha in range(0, self.worksheet_EA.nrows):
                 if re.findall(campo, str(self.worksheet_EA.cell(linha, coluna).value)) != []:
@@ -371,7 +379,6 @@ class EnergiaArmazenada(Inicializacao):
         linha = linha_e_coluna[0]
         coluna = linha_e_coluna[1]
 
-        lista = []
         for scan_linha in range(linha+range_linha, self.worksheet_EA.nrows):
             valor = str(self.worksheet_EA.cell(scan_linha, coluna).value)
             if re.findall(r'[0-9]+\.[0-9]', valor) != []:
@@ -381,5 +388,4 @@ class EnergiaArmazenada(Inicializacao):
             else:
                 lista.append(str(self.worksheet_EA.cell(scan_linha, coluna).value).strip())
 
-
-        ea_dicionario_campos[titulo_coluna] = lista
+        ea_dicionario_campos.setdefault(titulo_coluna, []).extend(lista) 

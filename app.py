@@ -2,11 +2,8 @@ import os, os.path
 import pandas as pd
 from Funcoes import *
 
-# Define duas listas: a primeira receberá todos os dicionários em estado bruto e a segunda receberá os dicionários transformados
-lista_impressao, lista_df = [], []
-
-# lista_arquivos = [arquivo[7:-5] for arquivo in os.listdir('files/')]
-lista_arquivos = ['01-01-2017', '02-01-2017']
+lista_arquivos = [arquivo[7:-5] for arquivo in os.listdir('files/')]
+# lista_arquivos = ['01-01-2017', '02-01-2017']
 
 for files in lista_arquivos:
     """
@@ -18,16 +15,12 @@ for files in lista_arquivos:
         DespachoTermico(files)
         ENA(files)
         EnergiaArmazenada(files)
-        
-        # Apenda os dicionários na primeira lista
-        lista_impressao.append(be_dicionario_campos)
-        lista_impressao.append(dt_dicionario_campos)
-        lista_impressao.append(ena_dicionario_campos)
-        lista_impressao.append(ea_dicionario_campos)
     except AttributeError as erro:
         print(f'O dia {files} veio com o arquivo corrompido. Erro encontrado: {erro}.')
         continue
 
+# Define duas listas: a primeira receberá todos os dicionários em estado bruto e a segunda receberá os dicionários transformados
+lista_impressao, lista_df = [], []
 
 # Definição do nome final das planilhas
 abas = ['01-Balanço de Energia', '12-Motivo do Despacho Térmico', '19-Energia Natural Afluente', '20-Variação Energia Armazenada']
