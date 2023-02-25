@@ -1,0 +1,12 @@
+# Excel Files
+*.xlsx
+
+# Notebooks
+*.ipynb
+
+# Versão antiga SDRO-ONS.py
+SDRO-ONS.py
+
+# __pycache__
+__pycache__
+*.pyc
