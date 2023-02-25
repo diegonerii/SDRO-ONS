@@ -3,3 +3,6 @@
 
 # Notebooks
 *.ipynb
+
+# Versão antiga SDRO-ONS.py
+SDRO-ONS.py

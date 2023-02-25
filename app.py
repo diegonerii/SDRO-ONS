@@ -1,6 +1,6 @@
 import os, os.path
 import pandas as pd
-from Funcoes import *
+from funcoes import *
 
 lista_arquivos = [arquivo[7:-5] for arquivo in os.listdir('files/')]
 # lista_arquivos = ['01-01-2017', '02-01-2017']
@@ -26,7 +26,7 @@ lista_impressao, lista_df = [], []
 abas = ['01-Balanço de Energia', '12-Motivo do Despacho Térmico', '19-Energia Natural Afluente', '20-Variação Energia Armazenada']
 
 # Criar um objeto ExcelWriter
-writer = pd.ExcelWriter('C:/Users/Diego/Downloads/DIARIO - Final.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('DIARIO - Final.xlsx', engine='xlsxwriter')
 
 # Apenda os dicionários na primeira lista
 lista_impressao.append(be_dicionario_campos)

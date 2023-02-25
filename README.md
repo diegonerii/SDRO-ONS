@@ -1,9 +1,9 @@
-## SDRO-ONS
+# SDRO-ONS
 
-# Introdução
+## Introdução
 Este projeto tem como objetivo principal a disponibilização de dados do Boletim Diário da Operação do ONS em Excel e de forma colunar. Atualmente, de todas as planilhas nas pastas excel, somente estão catalogadas: Balanço Energético, Despacho Térmico, Energia Natural Afluente e Energia Armazenada.
 
-# Arquivos
+## Arquivos
 Para isso, o projeto está dividido em 3 arquivos principais:
 
     1. baixa_arquivos.py: através de scraping, vai baixar todos os arquivos históricos do Boletim Diário da Operação e depois armazenar na pasta "files". A data inicial é 01/01/2017.
@@ -14,7 +14,7 @@ Para isso, o projeto está dividido em 3 arquivos principais:
       2.4. Energia Armazenada
     3. app.py: será o arquivo que vai instanciar as classes definidas em (2) e fazer as etapas para salvar o excel final.
 
-# Como Utilizar
+## Como Utilizar
 
 Para utilizar este projeto, é necessário:
 
