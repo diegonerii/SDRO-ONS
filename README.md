@@ -9,13 +9,13 @@ Este projeto tem como objetivo principal a disponibilização de dados do Boleti
 ## Arquivos
 Para isso, o projeto está dividido em 3 arquivos principais:
 
-1. baixa_arquivos.py: através de scraping, vai baixar todos os arquivos históricos do Boletim Diário da Operação e depois armazenar na pasta "files". A data inicial é 01/01/2017.
-2. funcoes.py: módulo que vai abriga todas as classes de transformação dos dados, uma para cada planilha do arquivo diário:
-    2.1. Balanço Energético
-    2.2. Despacho Térmico
-    2.3. Energia Natural Afluente
-    2.4. Energia Armazenada
-3. app.py: será o arquivo que vai instanciar as classes definidas em (2) e fazer as etapas para salvar o excel final.
+1. **baixa_arquivos.py**: através de scraping, vai baixar todos os arquivos históricos do Boletim Diário da Operação e depois armazenar na pasta "files". A data inicial é 01/01/2017.
+2. **funcoes.py**: módulo que vai abriga todas as classes de transformação dos dados, uma para cada planilha do arquivo diário:
+    1. Balanço Energético
+    2. Despacho Térmico
+    3. Energia Natural Afluente
+    4. Energia Armazenada
+3. **app.py**: será o arquivo que vai instanciar as classes definidas em (2) e fazer as etapas para salvar o excel final.
 
 ## Como Utilizar
 
