@@ -1,5 +1,5 @@
-# SDRO-ONS
 ![Operador Nacional do Sistema](https://user-images.githubusercontent.com/35044363/221372716-a5065a5b-b874-4362-a1bd-e58b162c5c4b.png)
+# SDRO-ONS
 
 ## Introdução
 Este projeto tem como objetivo principal a disponibilização de dados do Boletim Diário da Operação do ONS em Excel e de forma colunar. Atualmente, de todas as planilhas nas pastas excel, somente estão catalogadas: **Balanço Energético**, **Despacho Térmico**, **Energia Natural Afluente** e **Energia Armazenada**.
