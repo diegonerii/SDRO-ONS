@@ -4,7 +4,7 @@
 ## Introdução
 Este projeto tem como objetivo principal a disponibilização de dados do Boletim Diário da Operação do ONS em Excel e de forma colunar. Atualmente, de todas as planilhas nas pastas excel, somente estão catalogadas: **Balanço Energético**, **Despacho Térmico**, **Energia Natural Afluente** e **Energia Armazenada**.
 
-<span style="color:red; font-weight:bold;">Observação: NÃO é um projeto oficial do ONS</span>
+**Observação: este projeto NÃO É oficial do ONS, mas somente feito por um entusiasta.**
 
 ## Arquivos
 Para isso, o projeto está dividido em 3 arquivos principais:
