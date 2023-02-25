@@ -1,7 +1,8 @@
 # SDRO-ONS
+![Operador Nacional do Sistema](../../../Imagens/ons-logo@2x.ac52821bc48c70c7d00b5fd88ad4a3c8f4013a25.png)
 
 ## Introdução
-Este projeto tem como objetivo principal a disponibilização de dados do Boletim Diário da Operação do ONS em Excel e de forma colunar. Atualmente, de todas as planilhas nas pastas excel, somente estão catalogadas: Balanço Energético, Despacho Térmico, Energia Natural Afluente e Energia Armazenada.
+Este projeto tem como objetivo principal a disponibilização de dados do Boletim Diário da Operação do ONS em Excel e de forma colunar. Atualmente, de todas as planilhas nas pastas excel, somente estão catalogadas: **Balanço Energético**, **Despacho Térmico**, **Energia Natural Afluente** e **Energia Armazenada**.
 
 ## Arquivos
 Para isso, o projeto está dividido em 3 arquivos principais:
@@ -21,3 +22,9 @@ Para utilizar este projeto, é necessário:
     1. Instalar uma versão do pacote xlrd menor que a 2.0.0, podendo ser encontrada em: https://pypi.org/project/xlrd/#history
     2. Verificar se existe espaço de armazenamento local disponível. Isso porque o baixa_arquivos.py vai fazer o download de milhares de arquivos e colocá-los na pasta local chamada "files".
 
+## Contatos
+
+<div>
+<a href = "mailto:diego.holanda.neri@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/diego-neri/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>   
+</div>
